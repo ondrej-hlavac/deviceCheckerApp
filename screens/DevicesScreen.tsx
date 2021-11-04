@@ -1,25 +1,24 @@
-import { StatusBar } from "expo-status-bar";
 import * as React from "react";
-import { Platform, StyleSheet } from "react-native";
+import { StyleSheet } from "react-native";
+import { DevicesList } from "../components/DevicesList";
 
 import EditScreenInfo from "../components/EditScreenInfo";
 import { Text, View } from "../components/Themed";
+import { RootTabScreenProps } from "../types";
 
-export default function ModalScreen() {
+export default function TabOneScreen({
+  navigation,
+}: RootTabScreenProps<"TabOne">) {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Device Checker App</Text>
+      <Text style={styles.title}>Available Devices</Text>
       <View
         style={styles.separator}
         lightColor="#eee"
         darkColor="rgba(255,255,255,0.1)"
       />
-
-      <Text>Aplikace na půjčování telefonů</Text>
-      {/* <EditScreenInfo path="/screens/ModalScreen.tsx" /> */}
-
-      {/* Use a light status bar on iOS to account for the black space above the modal */}
-      <StatusBar style={Platform.OS === "ios" ? "light" : "auto"} />
+      <Text>devices list</Text>
+      <DevicesList />
     </View>
   );
 }
@@ -27,8 +26,9 @@ export default function ModalScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    marginTop: 20,
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "flex-start",
   },
   title: {
     fontSize: 20,
